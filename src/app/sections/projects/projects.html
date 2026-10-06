@@ -1,0 +1,54 @@
+<section id="work" class="section work">
+  <div class="work__grid">
+    <div class="work__side">
+      <h2 class="section-title"><app-star class="spin-star" />{{ i18n.ui().work.title }}</h2>
+
+      <p class="work__counter" aria-hidden="true">
+        <span class="work__current">{{ pad(active() + 1) }}</span>
+        <span class="work__total">/ {{ pad(projects.length) }}</span>
+      </p>
+
+      <ol class="work__list">
+        @for (project of projects; track project.title; let i = $index) {
+          <li>
+            <button type="button" class="work__item" [class.work__item--active]="active() === i" (click)="scrollTo(i)">
+              <span class="work__meta">
+                <span class="work__dot" [class]="'work__dot--' + project.tone"></span>
+                {{ i18n.pick(project.category) }} · {{ project.year }}
+              </span>
+              <span class="work__name">{{ project.title }}</span>
+            </button>
+          </li>
+        }
+      </ol>
+    </div>
+
+    <div class="work__previews">
+      @for (project of projects; track project.title; let i = $index) {
+        <article #card class="card" [class]="'card--' + project.tone" [class.card--active]="active() === i" [attr.data-index]="i" appReveal>
+          <div class="card__media" [style.background-image]="project.image ? 'url(' + project.image + ')' : null"></div>
+          <div class="card__shade"></div>
+          <span class="card__number" aria-hidden="true">{{ pad(i + 1) }}</span>
+
+          <div class="card__body">
+            <h3 class="card__title">{{ project.title }}</h3>
+            <p class="card__desc">{{ i18n.pick(project.description) }}</p>
+            <ul class="card__tags">
+              @for (tag of project.tags; track tag) {
+                <li>{{ tag }}</li>
+              }
+            </ul>
+            <a class="pill card__cta" [href]="project.link" target="_blank" rel="noopener">
+              {{ i18n.ui().work.viewProject }}
+              <span class="pill__icon">
+                <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+                  <path d="M3 11L11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

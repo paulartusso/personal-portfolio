@@ -1,0 +1,21 @@
+@if (phase() !== 'done') {
+  <div class="loader" [class]="'loader--' + phase()" role="status" [attr.aria-label]="i18n.ui().loading + ' ' + progress() + '%'">
+    <div class="loader__glow"></div>
+
+    <div class="loader__count" aria-hidden="true">
+      {{ progress() }}<span>%</span>
+    </div>
+
+    <div class="loader__bar" aria-hidden="true">
+      <span [style.transform]="'scaleX(' + progress() / 100 + ')'"></span>
+    </div>
+
+    <div class="loader__columns" aria-hidden="true">
+      @for (color of columns; track color; let i = $index) {
+        <div class="loader__col" [class]="'loader__col--' + color" [style.--i]="i"></div>
+      }
+    </div>
+
+    <span class="loader__label" aria-hidden="true">{{ i18n.ui().loading }}</span>
+  </div>
+}

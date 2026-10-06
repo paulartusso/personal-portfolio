@@ -1,1 +1,221 @@
-/* You can add global styles to this file, and also import other style files */
+//palette
+$amber-gold: #ffbe0a;
+$ink-black: #121f2b;
+$berry-lipstick: #d90368;
+$ghost-white: #f8f4f9;
+$ash-grey: #a0c1b9;
+
+:root {
+    --amber: #{$amber-gold};
+    --ink: #{$ink-black};
+    --berry: #{$berry-lipstick};
+    --ghost: #{$ghost-white};
+    --ash: #{$ash-grey};
+
+    --bg-color: #{$ghost-white};
+    --text-color: #{$ink-black};
+    // decorative fills (blobs, hover wipes, dots)
+    --accent-color: #{$amber-gold};
+    // readable accent for text on the background
+    --highlight-color: #{$berry-lipstick};
+    // text placed on top of --accent-color
+    --on-accent: #{$ink-black};
+
+    --muted: color-mix(in srgb, var(--text-color) 55%, transparent);
+    --faint: color-mix(in srgb, var(--text-color) 18%, transparent);
+    --line: color-mix(in srgb, var(--text-color) 14%, transparent);
+
+    --font-heading: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Poppins', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --gutter: 30px;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+
+    @media (min-width: 1024px) {
+        --gutter: 60px;
+    }
+}
+
+:root.theme-dark {
+    --bg-color: #{$ink-black};
+    --text-color: #{$ghost-white};
+    --accent-color: #{$berry-lipstick};
+    --highlight-color: #{$amber-gold};
+    --on-accent: #{$ghost-white};
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.5s ease, color 0.5s ease;
+
+    &.is-loading {
+        overflow: hidden;
+    }
+}
+
+@media (pointer: fine) {
+    body.has-cursor,
+    body.has-cursor a,
+    body.has-cursor button {
+        cursor: none;
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+::selection {
+    background: var(--accent-color);
+    color: var(--on-accent);
+}
+
+:focus-visible {
+    outline: 2px solid var(--highlight-color);
+    outline-offset: 4px;
+}
+
+// ---- shared section pieces ----
+
+.section {
+    position: relative;
+    padding: 100px var(--gutter);
+
+    @media (min-width: 1024px) {
+        padding-block: 160px;
+    }
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 3rem;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    @media (min-width: 1024px) {
+        font-size: 18px;
+        margin-bottom: 4rem;
+    }
+}
+
+.spin-star {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    color: var(--highlight-color);
+    animation: spin 8s linear infinite;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    border: 1px solid var(--faint);
+    border-radius: 999px;
+    font-size: 14px;
+    backdrop-filter: blur(6px);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+    .pill__icon {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--line);
+        transition: transform 0.3s var(--ease-out);
+    }
+
+    &:hover {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
+        color: var(--on-accent);
+
+        .pill__icon {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+// ---- scroll reveal (see RevealDirective) ----
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+
+    &.is-visible {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}

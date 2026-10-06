@@ -1,0 +1,222 @@
+.work__grid {
+    display: grid;
+    gap: 48px;
+
+    @media (min-width: 1024px) {
+        grid-template-columns: 2fr 3fr;
+        gap: 96px;
+    }
+}
+
+// ---- sticky index ----
+
+.work__side {
+    @media (min-width: 1024px) {
+        position: sticky;
+        top: 100px;
+        align-self: start;
+    }
+}
+
+.work__counter {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0 0 2rem;
+    font-family: var(--font-mono);
+}
+
+.work__current {
+    font-size: clamp(48px, 5vw, 64px);
+    line-height: 1;
+    color: var(--faint);
+}
+
+.work__total {
+    font-size: 20px;
+    color: var(--faint);
+}
+
+.work__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.work__item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    padding: 16px 0 16px 20px;
+    border-left: 2px solid var(--line);
+    text-align: left;
+    opacity: 0.4;
+    transition: opacity 0.3s ease, border-color 0.3s ease;
+
+    &:hover,
+    &--active {
+        opacity: 1;
+    }
+
+    &--active {
+        border-color: var(--highlight-color);
+
+        .work__name {
+            transform: translateX(10px);
+        }
+    }
+}
+
+.work__meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+}
+
+.work__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: blink 2s ease-in-out infinite;
+
+    &--amber { background: var(--amber); }
+    &--berry { background: var(--berry); }
+    &--ash { background: var(--ash); }
+}
+
+.work__name {
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 2.6vw, 34px);
+    font-weight: 700;
+    line-height: 1;
+    transition: transform 0.4s var(--ease-out);
+}
+
+// ---- preview cards ----
+
+.work__previews {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    @media (min-width: 1024px) {
+        gap: 80px;
+    }
+}
+
+.card {
+    --tone: var(--berry);
+    position: relative;
+    height: 62vh;
+    min-height: 440px;
+    overflow: hidden;
+    border-radius: 28px;
+    background: var(--ink);
+    color: var(--ghost);
+    border: 1px solid color-mix(in srgb, var(--ghost) 10%, transparent);
+    box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--ink) 60%, transparent);
+
+    @media (min-width: 1024px) {
+        height: 75vh;
+    }
+
+    &--amber { --tone: var(--amber); }
+    &--ash { --tone: var(--ash); }
+}
+
+.card__media {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 80% 15%, var(--tone) 0%, transparent 45%),
+        radial-gradient(circle at 10% 90%, color-mix(in srgb, var(--tone) 50%, transparent) 0%, transparent 50%),
+        var(--ink);
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.08);
+    transition: transform 1.2s var(--ease-out);
+
+    .card--active & {
+        transform: scale(1);
+    }
+}
+
+.card__shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--ink) 0%, color-mix(in srgb, var(--ink) 40%, transparent) 50%, transparent 100%);
+}
+
+.card__number {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-family: var(--font-mono);
+    font-size: clamp(110px, 14vw, 200px);
+    line-height: 1;
+    opacity: 0.08;
+}
+
+.card__body {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 32px;
+
+    @media (min-width: 1024px) {
+        padding: 48px;
+    }
+}
+
+.card__title {
+    margin: 0 0 12px;
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.card__desc {
+    max-width: 480px;
+    margin: 0 0 20px;
+    font-size: clamp(15px, 1.3vw, 18px);
+    line-height: 1.6;
+    color: color-mix(in srgb, var(--ghost) 80%, transparent);
+}
+
+.card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin: 0 0 28px;
+    padding: 0;
+    list-style: none;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--ghost) 55%, transparent);
+}
+
+.card__cta {
+    border-color: color-mix(in srgb, var(--ghost) 25%, transparent);
+
+    .pill__icon {
+        background: color-mix(in srgb, var(--ghost) 12%, transparent);
+    }
+
+    &:hover {
+        background: var(--tone);
+        border-color: var(--tone);
+        color: var(--ink);
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.35;
+    }
+}

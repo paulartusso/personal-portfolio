@@ -1,0 +1,40 @@
+<section id="experience" class="section experience">
+  <div class="experience__head" appReveal>
+    <h2 class="section-title"><app-star class="spin-star" />{{ i18n.ui().experience.title }}</h2>
+    <p class="experience__lead">{{ i18n.ui().experience.lead }}</p>
+  </div>
+
+  <ol class="jobs">
+    @for (job of jobs; track $index; let i = $index) {
+      <li class="job" appReveal [revealDelay]="i * 100">
+        <div class="job__fill" aria-hidden="true"></div>
+
+        <span class="job__period">{{ i18n.pick(job.period) }}</span>
+
+        <div class="job__main">
+          <h3 class="job__role">{{ i18n.pick(job.role) }}</h3>
+          <p class="job__desc">{{ i18n.pick(job.description) }}</p>
+          <ul class="job__stack">
+            @for (tech of job.stack; track tech) {
+              <li>{{ tech }}</li>
+            }
+          </ul>
+        </div>
+
+        <div class="job__company">
+          @if (job.link) {
+            <a [href]="job.link" target="_blank" rel="noopener" class="job__company-name">
+              {{ job.company }}
+              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M3 11L11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+            </a>
+          } @else {
+            <span class="job__company-name">{{ job.company }}</span>
+          }
+          <span class="job__location">{{ i18n.pick(job.location) }}</span>
+        </div>
+      </li>
+    }
+  </ol>
+</section>

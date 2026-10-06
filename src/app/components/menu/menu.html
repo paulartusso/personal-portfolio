@@ -1,0 +1,36 @@
+<header class="bar" [class.bar--scrolled]="scrolled()" [class.bar--hidden]="hiddenBar()" [class.bar--open]="open()">
+  <a href="#top" class="bar__home" (click)="close()" [attr.aria-label]="i18n.ui().nav.home + ' — ' + profile.firstName + ' ' + profile.lastName">
+    <app-icon name="home" />
+  </a>
+
+  <nav class="bar__nav" aria-label="Main">
+    @for (link of links; track link.href) {
+      <a [href]="link.href" class="bar__link">{{ i18n.ui().nav[link.key] }}</a>
+    }
+  </nav>
+
+  <div class="bar__actions">
+    <button
+      type="button"
+      class="theme-toggle"
+      (click)="theme.toggleTheme()"
+      [attr.aria-label]="theme.isDark() ? i18n.ui().theme.toLight : i18n.ui().theme.toDark"
+    >
+      <app-icon class="theme-toggle__icon" [name]="theme.isDark() ? 'moon' : 'sun'" />
+      <span>{{ theme.isDark() ? i18n.ui().theme.dark : i18n.ui().theme.light }}</span>
+    </button>
+
+    <button type="button" class="burger" (click)="toggle()" [attr.aria-expanded]="open()" aria-controls="mobile-nav" [attr.aria-label]="i18n.ui().nav.menu">
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<nav id="mobile-nav" class="overlay" [class.overlay--open]="open()" aria-label="Mobile">
+  @for (link of links; track link.href; let i = $index) {
+    <a [href]="link.href" class="overlay__link" [style.--i]="i" (click)="close()">
+      <span class="overlay__num">0{{ i + 1 }}</span>{{ i18n.ui().nav[link.key] }}
+    </a>
+  }
+</nav>

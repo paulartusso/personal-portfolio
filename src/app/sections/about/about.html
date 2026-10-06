@@ -1,0 +1,26 @@
+<section id="about" class="section about">
+  <div class="about__intro" appReveal>
+    <h2 class="section-title"><app-star class="spin-star" />{{ i18n.ui().about.title }}</h2>
+    <p class="about__bio">{{ i18n.pick(profile.bio) }}</p>
+  </div>
+
+  <!--
+  <div class="about__grid">
+    <aside class="about__aside" aria-hidden="true">
+      <div class="about__quote-wrap">
+        @for (skill of skills; track $index; let i = $index) {
+          <p class="about__quote" [class.about__quote--active]="active() === i">“ {{ i18n.pick(skill.quote) }} ”</p>
+        }
+      </div>
+    </aside>
+
+      <ul class="about__skills">
+        @for (skill of skills; track $index; let i = $index) {
+          <li #skill class="about__skill" [class.about__skill--active]="active() === i" [class.about__skill--past]="active() > i" [attr.data-index]="i">
+            <span class="about__index">0{{ i + 1 }}</span>{{ i18n.pick(skill.label) }}
+          </li>
+        }
+      </ul>
+    </div>
+    -->
+</section>

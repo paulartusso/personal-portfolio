@@ -1,0 +1,34 @@
+<section id="top" class="hero" [class.hero--ready]="ready()" [style.--tx]="tilt().x" [style.--ty]="tilt().y">
+  <div class="hero__blobs" aria-hidden="true">
+    <span class="blob blob--berry"></span>
+    <span class="blob blob--amber"></span>
+    <span class="blob blob--ash"></span>
+  </div>
+
+  <div class="hero__content">
+    <h1 class="hero__name">
+      <span class="line"><span>{{ profile.firstName }}</span></span>
+      <span class="line line--indent"><span>{{ profile.lastName }}</span></span>
+    </h1>
+
+    <p class="hero__role">
+      <span class="line"><span><i class="hero__dash"></i>{{ i18n.pick(profile.role) }}</span></span>
+    </p>
+  </div>
+
+  <div class="hero__bottom">
+    <a href="#about" class="hero__scroll" [attr.aria-label]="i18n.ui().hero.scrollDown">
+      <svg class="hero__ring hero__ring--outer" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="49" pathLength="100" />
+      </svg>
+      <svg class="hero__ring hero__ring--inner" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="49" pathLength="100" />
+      </svg>
+      <svg class="hero__arrow" viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M8 2v12M3 9l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" />
+      </svg>
+    </a>
+
+    <app-language-switcher />
+  </div>
+</section>

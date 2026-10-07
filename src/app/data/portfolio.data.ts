@@ -38,7 +38,7 @@ export interface Skill {
 export interface Social {
   label: string;
   url: string;
-  /** Optional pixel icon shown before the label (see components/icon/icons.ts). */
+  /*Optional pixel icon shown before the label*/
   icon?: IconName;
 }
 
@@ -46,7 +46,7 @@ export const PROFILE = {
   firstName: 'Paula',
   lastName: 'Artusso',
   role: same('Frontend developer'),
-  email: 'hello@example.com',
+  email: 'pavlartdeveloper@gmail.com',
   // the line break is kept on screen
   bio: {
     en: 'Argentinian developer based in Milan,\nI work mostly on frontend, dive into backend when needed, naturally step into team leadership roles, and never stop being curious about technology and people.',
@@ -156,7 +156,7 @@ const jobPlaceholder: Localized = {
 
 export const EXPERIENCE: Job[] = [
   {
-    period: { en: '2024 — Present', es: '2024 — Actualidad', it: '2024 — Oggi' },
+    period: { en: '2024 — Present', es: '2024 - Actualidad', it: '2024 - Oggi' },
     role: same('Frontend Developer'),
     company: 'Company Name',
     location: { en: 'City · Hybrid', es: 'Ciudad · Híbrido', it: 'Città · Ibrido' },
@@ -169,7 +169,7 @@ export const EXPERIENCE: Job[] = [
     link: '#',
   },
   {
-    period: same('2022 — 2024'),
+    period: same('2022 - 2024'),
     role: same('Junior Frontend Developer'),
     company: 'Company Name',
     location: { en: 'City · Remote', es: 'Ciudad · Remoto', it: 'Città · Da remoto' },
@@ -178,7 +178,7 @@ export const EXPERIENCE: Job[] = [
     link: '#',
   },
   {
-    period: same('2021 — 2022'),
+    period: same('2021 - 2022'),
     role: { en: 'Web Development Intern', es: 'Pasantía en desarrollo web', it: 'Stage in sviluppo web' },
     company: 'Company Name',
     location: { en: 'City · On-site', es: 'Ciudad · Presencial', it: 'Città · In sede' },

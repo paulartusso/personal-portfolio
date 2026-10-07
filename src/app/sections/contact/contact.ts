@@ -3,10 +3,11 @@ import { Icon } from '../../components/icon/icon';
 import { PROFILE, SOCIALS } from '../../data/portfolio.data';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { LanguageService } from '../../services/language.service';
+import { Star } from '../../components/star/star';
 
 @Component({
   selector: 'app-contact',
-  imports: [RevealDirective, Icon],
+  imports: [RevealDirective, Icon, Star],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })

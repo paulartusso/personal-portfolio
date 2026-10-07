@@ -1,7 +1,10 @@
 <section id="contact" class="section contact">
   <div class="contact__glow" aria-hidden="true"></div>
 
-  <p class="contact__kicker" appReveal>{{ i18n.ui().contact.kicker }}</p>
+  <p class="contact__kicker" appReveal>
+    <app-star class="spin-star"></app-star>
+    {{ i18n.ui().contact.kicker }}
+  </p>
 
   <div class="contact__row">
     <a class="contact__cta" [href]="'mailto:' + profile.email" appReveal>{{ i18n.ui().contact.cta }}</a>

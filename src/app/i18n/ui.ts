@@ -7,8 +7,8 @@ const en = {
   hero: { scrollDown: 'Scroll down', language: 'Language' },
   about: { title: 'About me' },
   work: { title: 'Selected works', viewProject: 'View project' },
-  experience: { title: 'Experience', lead: "Where I've been building things." },
-  contact: { kicker: 'Have a project in mind?', cta: 'Get in touch', backToTop: 'Back to top', iconsBy: 'Pixel icons by Streamline' },
+  experience: { title: 'Experience', lead: "What i've been doing since now" },
+  contact: { kicker: 'Have a project in mind?', cta: 'Contact me', backToTop: 'Back to top', iconsBy: 'Pixel icons by Streamline' },
 };
 
 export type UiStrings = typeof en;
@@ -20,8 +20,8 @@ const es: UiStrings = {
   hero: { scrollDown: 'Bajar', language: 'Idioma' },
   about: { title: 'Sobre mí' },
   work: { title: 'Proyectos destacados', viewProject: 'Ver proyecto' },
-  experience: { title: 'Experiencia', lead: 'Donde estuve construyendo cosas.' },
-  contact: { kicker: '¿Tenés un proyecto en mente?', cta: 'Hablemos', backToTop: 'Volver arriba', iconsBy: 'Íconos Pixel de Streamline' },
+  experience: { title: 'Experiencia', lead: 'Lo que estuve haciendo hasta ahora.' },
+  contact: { kicker: '¿Tenés un proyecto en mente?', cta: 'Contactame', backToTop: 'Volver arriba', iconsBy: 'Íconos Pixel de Streamline' },
 };
 
 const it: UiStrings = {
@@ -31,8 +31,8 @@ const it: UiStrings = {
   hero: { scrollDown: 'Scorri giù', language: 'Lingua' },
   about: { title: 'Chi sono' },
   work: { title: 'Progetti selezionati', viewProject: 'Vedi progetto' },
-  experience: { title: 'Esperienza', lead: 'Dove ho costruito cose.' },
-  contact: { kicker: 'Hai un progetto in mente?', cta: 'Parliamone', backToTop: 'Torna su', iconsBy: 'Icone Pixel di Streamline' },
+  experience: { title: 'Esperienza', lead: 'Cosa ho fatto fino ad oggi' },
+  contact: { kicker: 'Hai un progetto in mente?', cta: 'Contattami', backToTop: 'Torna su', iconsBy: 'Icone Pixel di Streamline' },
 };
 
 export const UI = { en, es, it };

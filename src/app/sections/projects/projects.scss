@@ -220,3 +220,55 @@
         opacity: 0.35;
     }
 }
+
+.hero__scroll {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+
+    @media (min-width: 1024px) {
+        width: 40px;
+        height: 40px;
+    }
+}
+// two thin open rings spinning in opposite directions around the arrow
+.hero__ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    animation: spin 12s linear infinite;
+
+    circle {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1;
+        stroke-linecap: round;
+        vector-effect: non-scaling-stroke;
+        transition: stroke 0.3s ease;
+    }
+
+    &--outer {
+        color: var(--highlight-color);
+
+        circle {
+            stroke-dasharray: 80 20;
+        }
+    }
+
+    &--inner {
+        inset: 22%;
+        width: 56%;
+        height: 56%;
+        color: var(--muted);
+        animation-duration: 8s;
+        animation-direction: reverse;
+
+        circle {
+            stroke-dasharray: 65 35;
+        }
+    }
+}

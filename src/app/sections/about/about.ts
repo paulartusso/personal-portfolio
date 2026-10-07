@@ -1,12 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, inject, signal, viewChildren } from '@angular/core';
-import { Star } from '../../components/star/star';
 import { PROFILE, SKILLS } from '../../data/portfolio.data';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-about',
-  imports: [Star, RevealDirective],
+  imports: [RevealDirective],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })

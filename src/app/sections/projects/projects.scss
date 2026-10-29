@@ -149,7 +149,8 @@
 .card__shade {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, var(--ink) 0%, color-mix(in srgb, var(--ink) 40%, transparent) 50%, transparent 100%);
+    // solid enough behind the text to sit on top of busy screenshots
+    background: linear-gradient(to top, var(--ink) 0%, color-mix(in srgb, var(--ink) 88%, transparent) 45%, transparent 85%);
 }
 
 .card__number {

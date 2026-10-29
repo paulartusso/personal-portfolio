@@ -39,7 +39,9 @@
           } @else {
             <span class="job__company-name">{{ job.company }}</span>
           }
-          <span class="job__location">{{ i18n.pick(job.location) }}</span>
+          @if (job.location) {
+            <span class="job__location">{{ i18n.pick(job.location) }}</span>
+          }
         </div>
       </li>
     }
